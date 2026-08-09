@@ -1,5 +1,6 @@
 #pragma once
 
+#include "binance.h"
 #include <cstdint>
 #include <deque>
 #include <functional>
@@ -29,7 +30,10 @@ struct order_book {
   uint64_t next_seq = 0;
 };
 
-// seed_from_snapshot(book, bidLevels, askLevels
+void seed_from_snapshot(order_book &book, std::list<level> &bidLevels,
+                        std::list<level> &askLevels,
+                        std::vector<order> &my_open_orders);
+std::vector<order> collect_mine(order_book &book);
 std::vector<fill> submit_market(order_book &book, side type, double qty);
 std::vector<fill> submit_limit(order_book &book, side type, double price,
                                double qty);

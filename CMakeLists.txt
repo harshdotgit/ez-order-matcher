@@ -11,14 +11,16 @@ FetchContent_MakeAvailable(cpr)
 FetchContent_Declare(json GIT_REPOSITORY https://github.com/nlohmann/json.git GIT_TAG v3.11.3)
 FetchContent_MakeAvailable(json)
 
-add_executable(engine
-src/main.cpp
+find_package(Threads REQUIRED)
+
+add_executable(viewer
+src/viewer.cpp
 src/order_book.cpp
 src/binance.cpp
 src/display.cpp)
 
-target_link_libraries(engine PRIVATE cpr::cpr nlohmann_json::nlohmann_json)
-target_include_directories(engine PRIVATE src)
+target_link_libraries(viewer PRIVATE cpr::cpr nlohmann_json::nlohmann_json Threads::Threads)
+target_include_directories(viewer PRIVATE src)
 
-find_package(Threads REQUIRED)
-target_link_libraries(engine PRIVATE Threads::Threads)
+add_executable(trader src/trader.cpp)
+target_include_directories(trader PRIVATE src)

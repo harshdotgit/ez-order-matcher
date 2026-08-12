@@ -1,9 +1,9 @@
-# order-matcher
-Order matching engine in C++, using the [Binance API](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints). 
+# ez-order-matcher
+Primitive FIFO order matching engine in C++, using the [Binance API](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints). 
 
 This was mainly built as an exercise in :
-1. Better understanding JSON response handling
-2. Understanding C++ concurrency (lock based : ```std::thread``` and ```std::mutex```) 
+1. Better understanding JSON response handling.
+2. Practicing C++ concurrency (lock based : ```std::thread``` and ```std::mutex```) 
 3. Implementing some sweet concepts I'm learning in the CFA curriculum.
 
 ![Example](./sample_op.png)
@@ -48,7 +48,5 @@ open -a Terminal . ## MacOS command
 
 ### Notes on dependencies
 * **POSIX** : the FIFO ipc utilizes POSIX calls (```mkfifo```, ```open```, ```read```, ```write```, ```poll```, ```fcntl```, ```unlink```), so it won't work on Windows.
-* **cpr 1.11.2** : the HTTP client used by ```binance.cpp```, and transitively pulls ```libcurl``` which is what takes the first build a long time. 
-* **nlohmann/json v3.11.3** : JSON parser for Binance API response. 
-
-
+* **cpr 1.11.2** : the HTTP client used by ```binance.cpp```, which transitively pulls ```libcurl``` (what takes the first build a long time). 
+* **nlohmann/json v3.11.3** : JSON parser for Binance API response. Check it out [here](https://github.com/nlohmann/json).

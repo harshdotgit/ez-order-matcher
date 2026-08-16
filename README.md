@@ -1,5 +1,5 @@
-# ez-order-matcher
-Primitive FIFO order matching engine in C++, using the [Binance API](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints). 
+# ezmatcher
+FIFO order matching engine in C++, using the [Binance API](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints). 
 
 This was mainly built as an exercise in :
 1. Better understanding JSON response handling.
